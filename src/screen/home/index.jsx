@@ -1,65 +1,56 @@
-import * as React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import Task from '@/componets/Task';
+import FloatingButton from '@/componets/FloatingButton';
 
 const Home = () => {
     const todos = [
         {
             task: "Clean my room",
             status: "Pending",
-            time: new Date('2024-03-16T12:00:00')
         },
         {
             task: "Go to gym and work hard",
             status: "Pending",
-            time: new Date('2024-03-16T08:00:00')
         },
         {
             task: "Call mom",
-            status: "complete",
-            time: new Date('2024-03-14T09:30:00')
+            status: "completed",
         },
         {
             task: "Read Book: Atomic habits",
             status: "Pending",
-            time: new Date('2024-03-18T12:00:00')
         },
         {
             task: "Buy new cloths",
             status: "Pending",
-            time: new Date('2024-03-19T11:00:00')
         },
         {
             task: "Clean my room",
-            status: "Pending",
-            time: new Date('2024-03-20T02:30:00')
+            status: "completed",
         },
     ]
     return (
         <View style={styles.container}>
             <ScrollView>
-                <View>
+                <View style={styles.innerView}>
                     {todos.map((todo) => {
                         return (
-                            <View>
-                                <Text style={styles.item}>{todo.task}</Text>
-                            </View>
+                            <Task key={todo.time} status={todo.status} title={todo.task}></Task>
                         );
                     })}
                 </View>
             </ScrollView>
+            <FloatingButton />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        padding: 50,
         flex: 1,
     },
-    item: {
-        padding: 20,
-        fontSize: 15,
-        marginTop: 5,
+    innerView: {
+        marginTop: 10
     }
 });
 
